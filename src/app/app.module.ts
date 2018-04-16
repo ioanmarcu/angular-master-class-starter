@@ -15,7 +15,10 @@ import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [ContactsAppComponent, ContactListComponent, ContactDetailComponent ],
-  providers: [ContactService],
+  providers: [
+    ContactService,
+    { provide: 'API_ENDPOINT', useValue:  'http://localhost:4201/api' }
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

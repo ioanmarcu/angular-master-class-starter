@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {Contact} from './models/contact';
@@ -16,7 +16,7 @@ interface ContactsResponse {
 export class ContactService {
   API_ENDPOINT = 'http://localhost:4201/api';
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, @Inject('API_ENDPOINT') private API_ENDPOINT)  {
   }
 
   getContacts(): Observable<Array<Contact>> {
