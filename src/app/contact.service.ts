@@ -14,13 +14,10 @@ interface ContactsResponse {
 
 @Injectable()
 export class ContactService {
-  API_ENDPOINT = 'http://localhost:4201/api';
-
   constructor(private http: HttpClient, @Inject('API_ENDPOINT') private API_ENDPOINT)  {
   }
 
   getContacts(): Observable<Array<Contact>> {
-    const url = this.API_ENDPOINT + '/contacts';
     return this.http.get<ContactsResponse>(`${this.API_ENDPOINT}/contacts/`)
       .pipe(map((data) => data.items));
   }
@@ -28,5 +25,9 @@ export class ContactService {
   getContact(id: string): Observable<Contact> {
     return this.http.get<ContactResponse>(`${this.API_ENDPOINT}/contacts/${id}`)
       .pipe(map((data) => data.item));
+  }
+
+  updateContact(contact: Contact): Observable<Contact> {
+    return this.http.put<ContactResponse>(`${this.API_ENDPOINT}/contacts/${contact.id}`, contact)  .pipe(map((data) => data.item));
   }
 }
