@@ -6,7 +6,7 @@ export interface Address {
 }
 
 export interface Contact {
-  id: number | string;
+  id: number;
   name?: string;
   email?: string;
   phone?: string | string[];

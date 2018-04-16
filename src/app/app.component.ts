@@ -1,10 +1,13 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+
 
 @Component({
   selector: 'trm-contacts-app',
-  templateUrl: './app.component.html',
+  template: `
+    <mat-toolbar color="primary">Contacts</mat-toolbar>
+    <router-outlet></router-outlet>
+  `,
   styleUrls: ['./app.component.scss']
 })
-export class ContactsAppComponent {
-  title = 'Angular Master Class';
+export class ContactsAppComponent{
 }
