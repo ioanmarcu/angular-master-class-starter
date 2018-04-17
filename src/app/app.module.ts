@@ -14,13 +14,16 @@ import {HttpClientModule} from '@angular/common/http';
 import {ContactEditorComponent} from './contact-editor/contact-editor.component';
 import {FormsModule} from '@angular/forms';
 import {ContactDetailViewComponent} from './contact-detail-view/contact-detail-view.component';
+import {TabComponent} from './tabs/tab/tab.component';
+import {TabsComponent} from './tabs/tabs/tabs.component';
 
 
 @NgModule({
-  declarations: [ContactsAppComponent, ContactListComponent, ContactDetailComponent, ContactEditorComponent, ContactDetailViewComponent ],
+  declarations: [ContactsAppComponent, ContactListComponent, ContactDetailComponent, ContactEditorComponent, ContactDetailViewComponent,
+    TabComponent, TabsComponent],
   providers: [
     ContactService,
-    { provide: 'API_ENDPOINT', useValue:  'http://localhost:4201/api' }
+    {provide: 'API_ENDPOINT', useValue: 'http://localhost:4201/api'}
   ],
   imports: [
     BrowserModule,
