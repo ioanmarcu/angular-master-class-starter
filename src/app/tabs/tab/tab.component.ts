@@ -6,15 +6,7 @@ import {TabsComponent} from '../tabs/tabs.component';
   templateUrl: './tab.component.html',
   styleUrls: ['./tab.component.css']
 })
-export class TabComponent implements OnInit {
+export class TabComponent {
   @Input() selected = false;
   @Input() title: string;
-
-  constructor(private tabsComponent: TabsComponent) {
-  }
-
-  ngOnInit() {
-    this.tabsComponent.add(this);
-  }
-
 }

@@ -25,8 +25,6 @@
           </mat-input-container>
         </trm-tab>
         <trm-tab title="Address" fxLayout="column" >
-          <fieldset fxLayout="column">
-            <legend>Address</legend>
             <mat-input-container fxFlex>
               <input matInput placeholder="Street" name="street" [(ngModel)]="contact.address.street">
             </mat-input-container>
@@ -36,7 +34,6 @@
             <mat-input-container fxFlex>
               <input matInput placeholder="City" name="city" [(ngModel)]="contact.address.city">
             </mat-input-container>
-          </fieldset>
         </trm-tab>
       </trm-tabs>
     </mat-card-content>
