@@ -1,8 +1,10 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Contact} from '../models/contact';
-import {ActivatedRoute, Router, RouterLinkActive} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {ContactService} from '../contact.service';
 import {Observable} from 'rxjs/Observable';
+import {EventBusService} from '../event-bus.service';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'trm-contact-detail-view',
@@ -12,13 +14,19 @@ import {Observable} from 'rxjs/Observable';
 export class ContactDetailViewComponent implements OnInit {
   contact: Observable<Contact>;
 
-  constructor(private route: ActivatedRoute, private contactService: ContactService, private router: Router) {
+  constructor(private route: ActivatedRoute, private contactService: ContactService, private router: Router,
+              private eventBusService: EventBusService, private title: Title) {
   }
 
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     this.contact = this.contactService.getContact(id);
+    this.contact.subscribe(c => {
+        this.eventBusService.emit('appTitleChange', c.name);
+        this.title.setTitle(c.name);
+      }
+    );
   }
 
   navigateToEditor(contact) {

@@ -1,4 +1,4 @@
-import {BrowserModule} from '@angular/platform-browser';
+import {BrowserModule, Title} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgModule} from '@angular/core';
 import {FlexLayoutModule} from '@angular/flex-layout';
@@ -16,13 +16,14 @@ import {FormsModule} from '@angular/forms';
 import {ContactDetailViewComponent} from './contact-detail-view/contact-detail-view.component';
 import {TabComponent} from './tabs/tab/tab.component';
 import {TabsComponent} from './tabs/tabs/tabs.component';
+import {EventBusService} from './event-bus.service';
 
 
 @NgModule({
   declarations: [ContactsAppComponent, ContactListComponent, ContactDetailComponent, ContactEditorComponent, ContactDetailViewComponent,
     TabComponent, TabsComponent],
   providers: [
-    ContactService,
+    ContactService, EventBusService, Title,
     {provide: 'API_ENDPOINT', useValue: 'http://localhost:4201/api'}
   ],
   imports: [
