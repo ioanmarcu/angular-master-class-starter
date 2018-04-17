@@ -1,6 +1,6 @@
 import {Inject, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {map} from 'rxjs/operators';
+import {delay, map} from 'rxjs/operators';
 import {Contact} from './models/contact';
 import {Observable} from 'rxjs/Observable';
 

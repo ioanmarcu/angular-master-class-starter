@@ -1,10 +1,8 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <mat-list>
+<mat-list>
     <a mat-list-item [routerLink]="['/contact', contact.id]"
        *ngFor="let contact of contacts$ | async ;trackBy:trackByContacts">
       <img mat-list-avatar src="{{contact.image}}">
       <h3 mat-line>{{contact.name}}</h3>
     </a>
-  </mat-list>
-</div>
+</mat-list>
