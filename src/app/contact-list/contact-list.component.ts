@@ -22,4 +22,8 @@ export class ContactListComponent implements OnInit {
   trackByContacts(index: number, contact: Contact): number {
     return contact.id;
   }
+
+  search(term: string) {
+    this.contacts$ = this.contactService.search(term);
+  }
 }
