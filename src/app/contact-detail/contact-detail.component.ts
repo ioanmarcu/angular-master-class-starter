@@ -1,7 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Contact} from '../models/contact';
-import {ContactService} from '../contact.service';
 import {Observable} from 'rxjs/Observable';
 
 @Component({
@@ -9,15 +7,8 @@ import {Observable} from 'rxjs/Observable';
   templateUrl: './contact-detail.component.html',
   styleUrls: ['./contact-detail.component.css']
 })
-export class ContactDetailComponent implements OnInit {
-  contact: Observable<Contact>;
-
-  constructor(private route: ActivatedRoute, private contactService: ContactService) {
-  }
-
-
-  ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.contact = this.contactService.getContact(id);
-  }
+export class ContactDetailComponent {
+  @Output() edit = new EventEmitter<Contact>();
+  @Output() back = new EventEmitter<void>();
+  @Input() contact: Contact;
 }

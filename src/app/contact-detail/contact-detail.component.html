@@ -1,4 +1,4 @@
-<div class="trm-contacts-detail" *ngIf="contact | async as contact">
+<div class="trm-contacts-detail">
   <mat-card>
     <mat-card-title-group class="fullBleed">
       <img mat-card-md-image [src]="contact?.image || ''">
@@ -22,10 +22,10 @@
       </dl>
     </mat-card-content>
     <mat-card-actions fxLayout fxLayoutAlign="center center">
-      <a [routerLink]="['/']" mat-button title="Go back to list">Go Back</a>
+      <button type="button" (click)="back.emit()" mat-button>Go Back</button>
     </mat-card-actions>
     <mat-card-actions fxLayout fxLayoutAlign="center center">
-      <a [routerLink]="['edit']" mat-button title="Edit">Edit</a>
+      <button type="button" (click)="edit.emit(contact)" mat-button>Edit</button>
     </mat-card-actions>
   </mat-card>
 </div>

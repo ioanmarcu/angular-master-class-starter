@@ -22,7 +22,7 @@ export class ContactListComponent implements OnInit {
       debounceTime(100), // O<string>
       distinctUntilChanged(), // O<string>
       switchMap(term => this.contactService.search(term))); // O<Array<Contact>>
-    const initialData$ = this.contactService.getContacts().pipe(delay(5000), takeUntil(this.terms$));
+    const initialData$ = this.contactService.getContacts();
     this.contacts$ = merge(search$, initialData$);
   }
 

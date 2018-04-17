@@ -13,10 +13,11 @@ import {ContactDetailComponent} from './contact-detail/contact-detail.component'
 import {HttpClientModule} from '@angular/common/http';
 import {ContactEditorComponent} from './contact-editor/contact-editor.component';
 import {FormsModule} from '@angular/forms';
+import {ContactDetailViewComponent} from './contact-detail-view/contact-detail-view.component';
 
 
 @NgModule({
-  declarations: [ContactsAppComponent, ContactListComponent, ContactDetailComponent, ContactEditorComponent ],
+  declarations: [ContactsAppComponent, ContactListComponent, ContactDetailComponent, ContactEditorComponent, ContactDetailViewComponent ],
   providers: [
     ContactService,
     { provide: 'API_ENDPOINT', useValue:  'http://localhost:4201/api' }
