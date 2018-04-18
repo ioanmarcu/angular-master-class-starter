@@ -17,6 +17,7 @@ import {ContactDetailViewComponent} from './contact-detail-view/contact-detail-v
 import {TabComponent} from './tabs/tab/tab.component';
 import {TabsComponent} from './tabs/tabs/tabs.component';
 import {EventBusService} from './event-bus.service';
+import {API_ENDPOINT} from './app.tokens';
 
 
 @NgModule({
@@ -24,14 +25,15 @@ import {EventBusService} from './event-bus.service';
     TabComponent, TabsComponent],
   providers: [
     ContactService, EventBusService, Title,
-    {provide: 'API_ENDPOINT', useValue: 'http://localhost:4201/api'}
+    {provide: API_ENDPOINT, useValue: 'http://localhost:4201/api'}
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     ContactsMaterialModule,
     FlexLayoutModule,
-    HttpClientModule, FormsModule,
+    HttpClientModule,
+    FormsModule,
     RouterModule.forRoot(APP_ROUTES)
   ],
   bootstrap: [ContactsAppComponent]

@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {ContactService} from '../contact.service';
-import {ActivatedRoute, Route, Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Contact} from '../models/contact';
-import {log} from 'util';
 import {EventBusService} from '../event-bus.service';
 import {Title} from '@angular/platform-browser';
+import {EventType} from '../event-bus';
 
 @Component({
   selector: 'trm-contact-editor',
@@ -23,7 +23,7 @@ export class ContactEditorComponent implements OnInit {
     this.contactService.getContact(id)
       .subscribe(contact => {
         this.contact = contact;
-        this.eventBusService.emit('appTitleChange', 'Edit: ' + contact.name);
+        this.eventBusService.emit(EventType.APP_TITILE_CHANGE, 'Edit: ' + contact.name);
         this.title.setTitle(contact.name);
       });
   }

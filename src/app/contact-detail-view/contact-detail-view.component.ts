@@ -5,6 +5,7 @@ import {ContactService} from '../contact.service';
 import {Observable} from 'rxjs/Observable';
 import {EventBusService} from '../event-bus.service';
 import {Title} from '@angular/platform-browser';
+import {EventType} from '../event-bus';
 
 @Component({
   selector: 'trm-contact-detail-view',
@@ -23,7 +24,7 @@ export class ContactDetailViewComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.contact = this.contactService.getContact(id);
     this.contact.subscribe(c => {
-        this.eventBusService.emit('appTitleChange', c.name);
+        this.eventBusService.emit(EventType.APP_TITILE_CHANGE, c.name);
         this.title.setTitle(c.name);
       }
     );

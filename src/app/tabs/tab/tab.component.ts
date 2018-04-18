@@ -1,5 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {TabsComponent} from '../tabs/tabs.component';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'trm-tab',

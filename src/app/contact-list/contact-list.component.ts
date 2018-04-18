@@ -3,10 +3,10 @@ import {ContactService} from '../contact.service';
 import {Contact} from '../models/contact';
 import {Observable} from 'rxjs/Observable';
 import {Subject} from 'rxjs/Subject';
-import {debounceTime, delay, distinctUntilChanged, switchMap, takeUntil} from 'rxjs/operators';
 import {merge} from 'rxjs/observable/merge';
 import {EventBusService} from '../event-bus.service';
 import {Title} from '@angular/platform-browser';
+import {EventType} from '../event-bus';
 
 @Component({
   selector: 'trm-contact-list',
@@ -16,17 +16,15 @@ import {Title} from '@angular/platform-browser';
 export class ContactListComponent implements OnInit {
   contacts$: Observable<Array<Contact>>;
   terms$ = new Subject<string>();
+
   constructor(private contactService: ContactService, private eventBusService: EventBusService, private title: Title) {
   }
 
   ngOnInit() {
-    const search$ = this.terms$.pipe(
-      debounceTime(100), // O<string>
-      distinctUntilChanged(), // O<string>
-      switchMap(term => this.contactService.search(term))); // O<Array<Contact>>
+    const search$ = this.contactService.search(this.terms$);
     const initialData$ = this.contactService.getContacts();
     this.contacts$ = merge(search$, initialData$);
-    this.eventBusService.emit('appTitleChange', 'Contacts');
+    this.eventBusService.emit(EventType.APP_TITILE_CHANGE, 'Contacts');
     this.title.setTitle('Contacts');
   }
 

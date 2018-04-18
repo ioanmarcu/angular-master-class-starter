@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {EventBusService} from './event-bus.service';
+import {EventType} from './event-bus';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class ContactsAppComponent implements OnInit {
   constructor(private eventBus: EventBusService) {}
 
   ngOnInit() {
-    this.eventBus.observe('appTitleChange')
+    this.eventBus.observe(EventType.APP_TITILE_CHANGE)
       .subscribe(title => this.title = title);
   }
 }
