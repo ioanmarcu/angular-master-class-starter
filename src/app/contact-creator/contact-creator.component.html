@@ -27,7 +27,12 @@
             </mat-hint>
           </mat-input-container>
           <mat-input-container fxFlex>
-            <input matInput placeholder="Email" name="email" ngModel>
+            <input matInput placeholder="Email" name="email"  #email="ngModel" ngModel trmValidateEmail >
+            <mat-hint align="end" *ngIf="!email.valid && !email.pristine">
+              <ng-container *ngIf="!email.errors.validateEmail.valid">
+                Whoops! Bad email
+              </ng-container>
+            </mat-hint>
           </mat-input-container>
           <mat-input-container fxFlex>
             <input matInput placeholder="Birthday" name="birthday" type="date" ngModel>
