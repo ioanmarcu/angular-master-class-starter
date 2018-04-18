@@ -43,4 +43,8 @@ export class ContactService {
       distinctUntilChanged(), // O<string>
       switchMap(term => this.searchRaw(term))); // O<Array<Contact>>
   }
+
+  addContact(contact: Contact) {
+    return this.http.post<ContactResponse>(`${this.apiEndpoint}/contacts/`, contact);
+  }
 }

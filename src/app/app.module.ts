@@ -18,11 +18,12 @@ import {TabComponent} from './tabs/tab/tab.component';
 import {TabsComponent} from './tabs/tabs/tabs.component';
 import {EventBusService} from './event-bus.service';
 import {API_ENDPOINT} from './app.tokens';
+import {ContactCreatorComponent} from './contact-creator/contact-creator.component';
 
 
 @NgModule({
   declarations: [ContactsAppComponent, ContactListComponent, ContactDetailComponent, ContactEditorComponent, ContactDetailViewComponent,
-    TabComponent, TabsComponent],
+    TabComponent, TabsComponent, ContactCreatorComponent],
   providers: [
     ContactService, EventBusService, Title,
     {provide: API_ENDPOINT, useValue: 'http://localhost:4201/api'}
