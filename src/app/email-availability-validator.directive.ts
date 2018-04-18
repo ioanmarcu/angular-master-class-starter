@@ -27,7 +27,7 @@ export class EmailAvailabilityValidatorDirective {
   }
 
 }
-function checkEmailAvailability(contactService: ContactService) {
+export function checkEmailAvailability(contactService: ContactService) {
   return (c: FormControl) => {
     return contactService.isEmailAvailable(c.value)
       .pipe(map(response => !response.error ? null : {

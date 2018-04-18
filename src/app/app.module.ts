@@ -12,7 +12,7 @@ import {RouterModule} from '@angular/router';
 import {ContactDetailComponent} from './contact-detail/contact-detail.component';
 import {HttpClientModule} from '@angular/common/http';
 import {ContactEditorComponent} from './contact-editor/contact-editor.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ContactDetailViewComponent} from './contact-detail-view/contact-detail-view.component';
 import {TabComponent} from './tabs/tab/tab.component';
 import {TabsComponent} from './tabs/tabs/tabs.component';
@@ -36,7 +36,7 @@ import {EmailAvailabilityValidatorDirective} from './email-availability-validato
     ContactsMaterialModule,
     FlexLayoutModule,
     HttpClientModule,
-    FormsModule,
+    FormsModule, ReactiveFormsModule,
     RouterModule.forRoot(APP_ROUTES)
   ],
   bootstrap: [ContactsAppComponent]
