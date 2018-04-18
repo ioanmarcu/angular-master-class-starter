@@ -1,5 +1,5 @@
 <div class="trm-contact-creator">
-  <form #form="ngForm" (ngSubmit)="save(form.value)">
+  <form #form="ngForm" (ngSubmit)="save(form.value)" >
     <mat-card>
       <mat-card-title-group>
         <img mat-card-md-image alt="Placeholder image" src="/assets/images/placeholder.png">
@@ -8,8 +8,23 @@
       </mat-card-title-group>
       <mat-card-content>
         <div fxLayout="column">
-          <mat-input-container fxFlex>
-            <input matInput placeholder="Name" name="name" ngModel>
+          <mat-input-container fxFlex [dividerColor]="name.errors ? 'warn' : 'primary'">
+            <input matInput
+                   placeholder="Name"
+                   name="name"
+                   #name="ngModel"
+                   ngModel
+                   required
+                   minlength="3">
+            <mat-hint align="end" *ngIf="!name.valid && !name.pristine">
+              <ng-container *ngIf="name.errors.minlength">
+                Whoops! Bad bad length. Required length: {{name.errors.minlength.requiredLength}}!!!!
+              </ng-container>
+              <ng-container *ngIf="name.errors.required">
+                Whoops! Name is required!!!!!
+              </ng-container>
+              <!-- Error messages go here -->
+            </mat-hint>
           </mat-input-container>
           <mat-input-container fxFlex>
             <input matInput placeholder="Email" name="email" ngModel>
@@ -40,7 +55,7 @@
         </div>
       </mat-card-content>
       <mat-card-actions fxLayout fxLayoutAlign="center center">
-        <button mat-button type="submit">Save</button>
+        <button mat-button [disabled]="!form.valid" type="submit">Save</button>
         <a mat-button (click)="cancel()" title="Cancel creating new contact">Cancel</a>
       </mat-card-actions>
     </mat-card>
