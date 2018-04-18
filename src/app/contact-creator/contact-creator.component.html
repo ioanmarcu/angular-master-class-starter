@@ -38,13 +38,16 @@
             <input matInput placeholder="Birthday" name="birthday" type="date">
           </mat-input-container>
 
+
           <div formArrayName="phone">
             <div *ngFor="let phone of form.get('phone').controls;
                let i = index; let l = last">
-              <input placeholder="Phone" [formControlName]="i">
+              <mat-input-container>
+                <input matInput placeholder="Phone" [formControlName]="i">
+              </mat-input-container>
               <button
                 mat-icon-button
-                type="button"
+                type="button"  *ngIf="i > 1"
                 (click)="removePhoneField(i)">
                 <mat-icon>highlight_off</mat-icon>
               </button>
