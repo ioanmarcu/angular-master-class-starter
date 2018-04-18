@@ -1,5 +1,5 @@
 <div class="trm-contact-creator">
-  <form #form="ngForm" (ngSubmit)="save(form.value)" >
+  <form #form="ngForm" (ngSubmit)="save(form.value)">
     <mat-card>
       <mat-card-title-group>
         <img mat-card-md-image alt="Placeholder image" src="/assets/images/placeholder.png">
@@ -27,10 +27,13 @@
             </mat-hint>
           </mat-input-container>
           <mat-input-container fxFlex>
-            <input matInput placeholder="Email" name="email"  #email="ngModel" ngModel trmValidateEmail >
+            <input matInput placeholder="Email" name="email" #email="ngModel" ngModel trmValidateEmail trmCheckEmailAvailability>
             <mat-hint align="end" *ngIf="!email.valid && !email.pristine">
-              <ng-container *ngIf="!email.errors.validateEmail.valid">
+              <ng-container *ngIf="!email.errors?.validateEmail?.valid">
                 Whoops! Bad email
+              </ng-container>
+              <ng-container *ngIf="email.errors?.emailTaken">
+                Whoops! Email is already taken
               </ng-container>
             </mat-hint>
           </mat-input-container>
@@ -47,10 +50,10 @@
             <legend>Address</legend>
             <div ngModelGroup="address">
               <mat-input-container fxFlex>
-                <input matInput placeholder="Street" name="street"  ngModel>
+                <input matInput placeholder="Street" name="street" ngModel>
               </mat-input-container>
               <mat-input-container fxFlex>
-                <input matInput placeholder="Zip" name="zip"  ngModel>
+                <input matInput placeholder="Zip" name="zip" ngModel>
               </mat-input-container>
               <mat-input-container fxFlex>
                 <input matInput placeholder="City" name="city" ngModel>

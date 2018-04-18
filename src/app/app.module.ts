@@ -20,11 +20,12 @@ import {EventBusService} from './event-bus.service';
 import {API_ENDPOINT} from './app.tokens';
 import {ContactCreatorComponent} from './contact-creator/contact-creator.component';
 import {EmailValidatorDirective} from './email-validator.directive';
+import {EmailAvailabilityValidatorDirective} from './email-availability-validator.directive';
 
 
 @NgModule({
   declarations: [ContactsAppComponent, ContactListComponent, ContactDetailComponent, ContactEditorComponent, ContactDetailViewComponent,
-    TabComponent, TabsComponent, ContactCreatorComponent, EmailValidatorDirective],
+    TabComponent, TabsComponent, ContactCreatorComponent, EmailValidatorDirective, EmailAvailabilityValidatorDirective],
   providers: [
     ContactService, EventBusService, Title,
     {provide: API_ENDPOINT, useValue: 'http://localhost:4201/api'}

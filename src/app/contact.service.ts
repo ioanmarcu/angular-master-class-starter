@@ -39,12 +39,16 @@ export class ContactService {
 
   search(terms: Observable<string>, debouncesMs = 400): Observable<Array<Contact>> {
     return terms.pipe(
-      debounceTime(100), // O<string>
+      debounceTime(debouncesMs), // O<string>
       distinctUntilChanged(), // O<string>
       switchMap(term => this.searchRaw(term))); // O<Array<Contact>>
   }
 
   addContact(contact: Contact) {
     return this.http.post<ContactResponse>(`${this.apiEndpoint}/contacts/`, contact);
+  }
+
+  isEmailAvailable(email: string): Observable<any> {
+    return this.http.get<any>(`${this.apiEndpoint}/check-email?email=${email}`);
   }
 }
